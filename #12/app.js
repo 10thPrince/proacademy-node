@@ -18,6 +18,7 @@ let productsHtmlArray = products.map((prod)=>{
     output = output.replace('{{%CAMERA%}}', prod.camera);
     output = output.replace('{{%PRICE%}}', prod.price);
     output = output.replace('{{%COLOR%}}', prod.color);
+    
     return output;
 })
 //create a server
