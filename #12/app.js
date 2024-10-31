@@ -53,12 +53,15 @@ const server = http.createServer((request, response)=>{
         });
         response.end(html.replace('{{%CONTENT%}}', 'Your are in the Contact page'));
     }else if(path.toLowerCase() === '/products'){
-        let productResponseHtml = html.replace('{{%CONTENT%}}', productsHtmlArray.join(','));
-        response.writeHead(200, {
-            'Content-Type': 'text/html'
-        })
-        response.end(productResponseHtml);
-
+        if(!query.id){
+            let productResponseHtml = html.replace('{{%CONTENT%}}', productsHtmlArray.join(','));
+            response.writeHead(200, {
+                'Content-Type': 'text/html'
+            })
+            response.end(productResponseHtml);
+        }else{
+            response.end('This is a product with ID =' + query.id)
+        }
         
     }else{
         response.writeHead(404, {
