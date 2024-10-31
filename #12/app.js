@@ -1,7 +1,8 @@
 const http = require('http');
 const fs = require('fs');
 const { error } = require('console');
-//#13
+const url = require('url');
+    //#13
 
 const html = fs.readFileSync('./Template/index.html', 'utf-8');
 
@@ -18,6 +19,7 @@ let productsHtmlArray = products.map((prod)=>{
     output = output.replace('{{%CAMERA%}}', prod.camera);
     output = output.replace('{{%PRICE%}}', prod.price);
     output = output.replace('{{%COLOR%}}', prod.color);
+    output = output.replace('{{%ID%}}', prod.id);
 
     return output;
 })
@@ -26,7 +28,11 @@ let productsHtmlArray = products.map((prod)=>{
 
 const server = http.createServer((request, response)=>{
   
-    let path  = request.url; 
+    let {query, pathname: path} = url.parse(request.url, true);
+
+    // console.log(x);
+    
+    //let path  = request.url; 
    // response.end(path);
     if(path === '/' || path.toLowerCase() === '/home'){
         response.writeHead(200, {
