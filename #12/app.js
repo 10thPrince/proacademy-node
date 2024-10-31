@@ -18,14 +18,15 @@ let productsHtmlArray = products.map((prod)=>{
     output = output.replace('{{%CAMERA%}}', prod.camera);
     output = output.replace('{{%PRICE%}}', prod.price);
     output = output.replace('{{%COLOR%}}', prod.color);
-    
+
     return output;
 })
+
 //create a server
 
 const server = http.createServer((request, response)=>{
   
-    let path  = request.url;
+    let path  = request.url; 
    // response.end(path);
     if(path === '/' || path.toLowerCase() === '/home'){
         response.writeHead(200, {
@@ -46,11 +47,12 @@ const server = http.createServer((request, response)=>{
         });
         response.end(html.replace('{{%CONTENT%}}', 'Your are in the Contact page'));
     }else if(path.toLowerCase() === '/products'){
+        let productResponseHtml = html.replace('{{%CONTENT%}}', productsHtmlArray.join(','));
         response.writeHead(200, {
-            'Content-Type': 'application/json'
+            'Content-Type': 'text/html'
         })
-        response.end('You are in Product Page');
-        console.log(productsHtmlArray);
+        response.end(productResponseHtml);
+
         
     }else{
         response.writeHead(404, {
