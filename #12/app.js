@@ -12,6 +12,12 @@ let productListHtml = fs.readFileSync('./Template/product-list.html', 'utf-8');
 products.map((prod)=>{
     let output = productListHtml.replace('{{%IMAGE%}}', prod.productImage);
     output = output.replace('{{%NAME%}}', prod.name);
+    output = output.replace('{{%MODELNAMES%}}', prod.name);
+    output = output.replace('{{%MODELNO%}}', prod.name);
+    output = output.replace('{{%SIZE%}}', prod.name);
+    output = output.replace('{{%CAMERA%}}', prod.name);
+    output = output.replace('{{%PRICE%}}', prod.name);
+    output = output.replace('{{%COLOR%}}', prod.name);
 })
 //create a server
 
@@ -24,7 +30,7 @@ const server = http.createServer((request, response)=>{
             'Content-Type': 'text/html',
             'my-header': 'hello world'
         });
-        response.end(html.replace('{{%CONTENT%}}', 'Your are in the Home page'));
+        response.end(html.replace('{{%CONTENT%}}', productListHtml));
     }else if(path.toLowerCase() === '/about'){
         response.writeHead(200, {
             'Content-Type': 'text/html',
