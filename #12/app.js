@@ -13,7 +13,7 @@ let productListHtml = fs.readFileSync('./Template/product-list.html', 'utf-8');
 let productsHtmlArray = products.map((prod)=>{
     let output = productListHtml.replace('{{%IMAGE%}}', prod.productImage);
     output = output.replace('{{%NAME%}}', prod.name);
-    output = output.replace('{{%MODELNAMES%}}', prod.modeName);
+    output = output.replace('{{%MODELNAME%}}', prod.modeName);
     output = output.replace('{{%MODELNO%}}', prod.modelNumber);
     output = output.replace('{{%SIZE%}}', prod.size);
     output = output.replace('{{%CAMERA%}}', prod.camera);
