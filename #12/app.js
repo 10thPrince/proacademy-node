@@ -2,6 +2,7 @@ const http = require('http');
 const fs = require('fs');
 const { error } = require('console');
 const url = require('url');
+
     //#13
 
 const html = fs.readFileSync('./Template/index.html', 'utf-8');
@@ -23,6 +24,11 @@ let productsHtmlArray = products.map((prod)=>{
 
     return output;
 })
+
+
+function replaceHtml(){
+    
+}
 
 //create a server
 

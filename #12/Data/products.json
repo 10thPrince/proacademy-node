@@ -102,5 +102,18 @@
     "camera": "12MP Rear Camera | 7MP Front Camera",
     "Description": "Widescreen HD LCD Retina Multi-touch IPS Display (1400:1 Contrast Ratio (Typical), True Tone Display, Wide Color Display (P3), Haptic Touch, 625 nits Max Brightness (Typical), Fingerprint-resistant Oleophobic Coating, Display Zoom, Reachability)",
     "productImage":"https://cdn1.vectorstock.com/i/1000x1000/70/05/realistic-frameless-smartphone-mock-up-3d-vector-33107005.jpg"
+  },
+  {
+    "id": 8,
+    "name": "APPLE iPhone 16",
+    "color":"Black",
+    "ROM": 16,
+    "price": 800,
+    "modeName": "iPhone 16",
+    "modelNumber": "MHGT3HN/A",
+    "size": "11.94 cm (4.7 inch) Retina HD Display",
+    "camera": "12MP Rear Camera | 7MP Front Camera",
+    "Description": "Widescreen HD LCD Retina Multi-touch IPS Display (1400:1 Contrast Ratio (Typical), True Tone Display, Wide Color Display (P3), Haptic Touch, 625 nits Max Brightness (Typical), Fingerprint-resistant Oleophobic Coating, Display Zoom, Reachability)",
+    "productImage":"https://cdn1.vectorstock.com/i/1000x1000/70/05/realistic-frameless-smartphone-mock-up-3d-vector-33107005.jpg"
   }
 ]
