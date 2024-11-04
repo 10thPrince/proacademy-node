@@ -10,8 +10,12 @@ const html = fs.readFileSync('./Template/index.html', 'utf-8');
 let products = JSON.parse(fs.readFileSync('./Data/products.json', 'utf-8'));
 
 let productListHtml = fs.readFileSync('./Template/product-list.html', 'utf-8');
+let productDetailsHtml = fs.readFileSync('./Template/product-details.html', 'utf-8');
 
-let productsHtmlArray = products.map((prod)=>{
+
+
+
+function replaceHtml(template, prod){
     let output = productListHtml.replace('{{%IMAGE%}}', prod.productImage);
     output = output.replace('{{%NAME%}}', prod.name);
     output = output.replace('{{%MODELNAME%}}', prod.modeName);
@@ -21,13 +25,10 @@ let productsHtmlArray = products.map((prod)=>{
     output = output.replace('{{%PRICE%}}', prod.price);
     output = output.replace('{{%COLOR%}}', prod.color);
     output = output.replace('{{%ID%}}', prod.id);
+    output = output.replace('{{%ROM%}}', prod.ROM);
+    output = output.replace('{{%DESC%}}', prod.Description);
 
     return output;
-})
-
-
-function replaceHtml(){
-    
 }
 
 //create a server
@@ -60,6 +61,9 @@ const server = http.createServer((request, response)=>{
         response.end(html.replace('{{%CONTENT%}}', 'Your are in the Contact page'));
     }else if(path.toLowerCase() === '/products'){
         if(!query.id){
+            let productsHtmlArray = products.map((prod)=>{
+                return replaceHtml(productListHtml, prod)
+            })
             let productResponseHtml = html.replace('{{%CONTENT%}}', productsHtmlArray.join(','));
             response.writeHead(200, {
                 'Content-Type': 'text/html'
@@ -69,7 +73,7 @@ const server = http.createServer((request, response)=>{
             response.end('This is a product with ID =' + query.id)
         }
         
-    }else{
+    }else{ 
         response.writeHead(404, {
             'Content-Type': 'text/html',
             'my-header': 'hello world'
